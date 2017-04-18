@@ -17,15 +17,16 @@ RSpec.feature "Visitor navigates from home page to product page", type: :feature
     end
   end
 
-  scenario "They natvigate to product detail page" do
+  scenario "They navigate to product detail page" do
     # ACT
     visit root_path
     click_link("Details", :match => :first)
 
-    # DEBUG
-    save_screenshot
-
     # VERIFY
     expect(page).to have_css '.product-detail', count: 1
+
+    # DEBUG
+    # NOTE: this has to come after the expect, otherwise it'll take a screenshot before getting to the page
+    save_screenshot
   end
 end
