@@ -1,6 +1,14 @@
 <h1>Signup</h1>
 
 <div class='jumbotron'>
+  <% if flash[:notice] %>
+    <div class="notice alert alert-warning">
+      <% flash[:notice].each do |notice| %>
+        <%= notice %> <br />
+      <% end %>
+    </div>
+  <% end %>
+
   <%= bootstrap_form_for :user, url: '/users' do |f| %>
     <%= f.text_field :first_name %>
     <%= f.text_field :last_name %>

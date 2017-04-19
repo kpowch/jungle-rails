@@ -10,12 +10,14 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
+      flash[:notice] = "User authentication failed. Password or email incorrect."
       redirect_to '/login'
     end
   end
 
   # to logout
   def destroy
+    flash[:notice] = "You have successfully been logged out. Come back soon!"
     session[:user_id] = nil
     redirect_to '/login'
   end
